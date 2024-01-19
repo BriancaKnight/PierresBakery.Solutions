@@ -1,7 +1,10 @@
-// namespace Bakery.Models
-// {
-//   public class Pastry
-//   {
-//     // properties, constructors, methods, etc. go here
-//   }
-// }
+namespace Bakery.Models
+{
+  public class Pastry
+  {
+    public Pastry()
+    {
+      
+    }
+  }
+}
