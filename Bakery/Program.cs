@@ -26,12 +26,12 @@ class Program
   static void OrderBakeryItems()
   {
     Console.WriteLine("How many loaves of bread would you like to order?");
-    if (int.TryParse(Console.ReadLine(), out int breadOrder))
+    if (int.TryParse(Console.ReadLine(), out int breadOrder) && breadOrder > 0)
     {
       Bread newBread = new Bread(breadOrder);
 
       Console.WriteLine("How many pastries would you like to order?");
-      if (int.TryParse(Console.ReadLine(), out int pastryOrder))
+      if (int.TryParse(Console.ReadLine(), out int pastryOrder) && pastryOrder > 0)
       {
         Pastry newPastry = new Pastry(pastryOrder);
 
