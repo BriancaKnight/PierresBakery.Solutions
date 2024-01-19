@@ -22,5 +22,14 @@ namespace Bakery.Tests
       int result = newBread.BreadOrder;
       Assert.AreEqual(breadOrder, result);
     }
+
+    [TestMethod]
+    public void SetBreadOrder_SetsValueOfBreadOrder_Void()
+    {
+      Bread newBread = new Bread(2);
+      int newBreadOrder = 2;
+      newBread.BreadOrder = newBreadOrder;
+      Assert.AreEqual(newBreadOrder, newBread.BreadOrder);
+    }
   }
 }
