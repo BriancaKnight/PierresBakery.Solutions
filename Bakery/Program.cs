@@ -3,6 +3,7 @@ using Bakery.Models;
 
 class Program
 {
+  // -------------------------------- Start App Items ---------------------------------
   static void Main()
   {
     Console.WriteLine("Welcome to my virtual Bakery!");
@@ -23,12 +24,14 @@ class Program
     }
   }
 
+  // ---------------------------------  Create Entire Order  ---------------------------------
+
   static void CreateOrder()
   {
-    int breadOrder = OrderItem("bread");
-    int pastryOrder = OrderItem("pastry");
+    int breadOrder = OrderItems("bread");
+    int pastryOrder = OrderItems("pastry");
 
-    Console.WriteLine($"Ok, you want {breadOrder} loaves of bread and {pastryOrder} pastries, is that right? Enter 'y' for yes and 'n' to enter new values.");
+    Console.WriteLine($"Ok, you want {breadOrder} loaves of bread and {pastryOrder} pastry, is that right? Enter 'y' for yes and 'n' to enter new values.");
 
     string order = Console.ReadLine();
 
@@ -40,14 +43,61 @@ class Program
       Console.WriteLine($"That brings the total of your order to ${newBread.DetermineBreadCost() + newPastry.DeterminePastryCost()}");
       Console.WriteLine("Thank you for shopping at the Virtual Bakery!");
     }
-    else
+    else if (order == "n" || order == "N")
     {
       Console.WriteLine("No problem, let's try again!");
-      CreateOrder();
+      Console.WriteLine("Which item would you like to adjust? Enter 'b' for bread and 'p' for pastry.");
+      string itemToAdjust = Console.ReadLine();
+
+      if (itemToAdjust == "b" || itemToAdjust == "B")
+      {
+        breadOrder = AdjustItemOrder("bread", breadOrder);
+      }
+      else if (itemToAdjust == "p" || itemToAdjust == "P")
+      {
+        pastryOrder = AdjustItemOrder("pastry", pastryOrder);
+      }
+      else
+      {
+        Console.WriteLine("Invalid input. Please enter 'b' for bread or 'p' for pastry.");
+      }
+    }
+    else
+    {
+      Console.WriteLine("Invalid input. Please enter 'y' to confirm or 'n' to try again.");
+
+      string confirmChange = Console.ReadLine();
+
+      if (confirmChange == "y" || confirmChange == "Y")
+      {
+        Console.WriteLine("Great! Let's build your order.");
+        CreateOrder();
+      }
+      else
+      {
+        Console.WriteLine("Hmm. Let's try again.");
+        Console.WriteLine("Which item would you like to adjust? Enter 'b' for bread and 'p' for pastry.");
+        string itemToAdjust = Console.ReadLine();
+
+        if (itemToAdjust == "b" || itemToAdjust == "B")
+        {
+          breadOrder = AdjustItemOrder("bread", breadOrder);
+        }
+        else if (itemToAdjust == "p" || itemToAdjust == "P")
+        {
+          pastryOrder = AdjustItemOrder("pastry", pastryOrder);
+        }
+        else
+        {
+          Console.WriteLine("Invalid input. Please enter 'b' for bread or 'p' for pastry.");
+        }
+      }
     }
   }
 
-  static int OrderItem(string itemName)
+  // -------------------------------- Order Individual Items ---------------------------------
+
+  static int OrderItems(string itemName)
   {
     Console.WriteLine($"How many orders of {itemName} would you like?");
     if (int.TryParse(Console.ReadLine(), out int orderQuantity) && orderQuantity > 0)
@@ -63,20 +113,41 @@ class Program
       else if (confirmation == "n" || confirmation == "N")
       {
         Console.WriteLine("Let's try again!");
-        return OrderItem(itemName);
+        return OrderItems(itemName);
       }
       else
       {
         Console.WriteLine("Invaild input. Please enter 'y' to confirm or 'n' to try again.");
-        return OrderItem(itemName);
+        return OrderItems(itemName);
       }
     }
     else
     {
       Console.WriteLine($"Invalid {itemName} input. Please enter a number above 0.");
-      return OrderItem(itemName);
+      return OrderItems(itemName);
     }
   }
+
+
+  // -------------------------------- Adjust Individual Items ---------------------------------
+
+  static int AdjustItemOrder(string itemName, int currentQuantity)
+  {
+    Console.WriteLine($"Current quantity of {itemName}: {currentQuantity}");
+    Console.WriteLine($"Enter the new quantity of {itemName} or '0' to keep it unchanged:");
+
+    if (int.TryParse(Console.ReadLine(), out int newQuantity) && newQuantity >= 0)
+    {
+      Console.WriteLine($"Adjusted {itemName} quantity to: {newQuantity}");
+      return newQuantity;
+    }
+    else
+    {
+      Console.WriteLine("Invalid input. Please enter a non-negative number.");
+      return AdjustItemOrder(itemName, currentQuantity);
+    }
+  }
+}
 }
 
 
