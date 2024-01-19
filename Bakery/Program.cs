@@ -102,31 +102,15 @@ class Program
     Console.WriteLine($"How many orders of {itemName} would you like?");
     if (int.TryParse(Console.ReadLine(), out int orderQuantity) && orderQuantity > 0)
     {
-      Console.WriteLine($"So you want to order {orderQuantity} {itemName}. Write 'y' to confirm or 'n' to try again.");
-      string confirmation = Console.ReadLine();
-
-      if (confirmation == "y" || confirmation == "Y")
-      {
-        Console.WriteLine($"Got it!");
-        return orderQuantity;
-      }
-      else if (confirmation == "n" || confirmation == "N")
-      {
-        Console.WriteLine("Let's try again!");
-        return OrderItems(itemName);
+      Console.WriteLine($"You've ordered {orderQuantity} {itemName}.");
+      return orderQuantity;
       }
       else
       {
-        Console.WriteLine("Invaild input. Please enter 'y' to confirm or 'n' to try again.");
+        Console.WriteLine($"Invaild {itemName}input. Please enter a positive number.");
         return OrderItems(itemName);
       }
     }
-    else
-    {
-      Console.WriteLine($"Invalid {itemName} input. Please enter a number above 0.");
-      return OrderItems(itemName);
-    }
-  }
 
 
   // -------------------------------- Adjust Individual Items ---------------------------------
@@ -134,7 +118,7 @@ class Program
   static int AdjustItemOrder(string itemName, int currentQuantity)
   {
     Console.WriteLine($"Current quantity of {itemName}: {currentQuantity}");
-    Console.WriteLine($"Enter the new quantity of {itemName} or '0' to keep it unchanged:");
+    Console.WriteLine($"Enter the new quantity of {itemName}.");
 
     if (int.TryParse(Console.ReadLine(), out int newQuantity) && newQuantity >= 0)
     {
@@ -148,7 +132,7 @@ class Program
     }
   }
 }
-}
+
 
 
 
