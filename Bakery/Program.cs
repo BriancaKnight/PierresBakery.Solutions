@@ -1,7 +1,65 @@
+using System;
+using Bakery.Models;
+
 class Program
 {
   static void Main()
   {
-    // We'll add user interface code here.
+    Console.WriteLine("Welcome to my virtual Bakery!");
+    Console.WriteLine("Bread is $5 per loaf, with a buy 2 get one free deal.");
+    Console.WriteLine("Pastries are $2 per treat, with a buy 3 get one free deal.");
+    Console.WriteLine("Would you like to start an order? enter 'y' for yes and 'n' for no.");
+
+    string shop = Console.ReadLine();
+
+    if (shop == "y" || shop == "Y")
+    {
+      Console.WriteLine("Great! Let's get started.");
+      Console.WriteLine("How many loaves of bread would you like to order?");
+      if (int.TryParse(Console.ReadLine(), out int breadOrder))
+      {
+        Bread newBread = new Bread(breadOrder);
+        Console.WriteLine("How many pastries would you like to order?");
+        if (int.TryParse(Console.ReadLine(), out int pastryOrder))
+        {
+          Pastry newPastry = new Pastry(pastryOrder);
+
+          Console.WriteLine($"Ok, you want {breadOrder} loaves of bread and {pastryOrder} pastries, is that right? Enter 'y' for yes and 'n' to enter new values.");
+
+          string order = Console.ReadLine();
+
+    if (order == "y" || order == "Y");
+    {
+      // here is logic for how much the order costs
+    }
+    else {
+      Console.WriteLine ("No worries! Let's try again.");
+      Console.WriteLine("How many loaves of bread would you like to order?");
+      if (int.TryParse(Console.ReadLine(), out int breadOrder))
+      {
+        Bread newBread = new Bread(breadOrder);
+        Console.WriteLine("How many pastries would you like to order?");
+        if (int.TryParse(Console.ReadLine(), out int pastryOrder))
+        {
+          Pastry newPastry = new Pastry(pastryOrder);
+
+          Console.WriteLine($"Ok, you want {breadOrder} loaves of bread and {pastryOrder} pastries, is that right? Enter 'y' for yes and 'n' to enter new values.");
+    }
+          
+        }
+        else
+        {
+          Console.WriteLine("Invalid pastry input. Please enter a number greater than 0.");
+        }
+      }
+      else
+      {
+        Console.WriteLine("Invalid bread input. Please enter a number greater than 0.");
+      }
+    }
+    else
+    {
+      Console.WriteLine("Thanks for stopping by! See you soon!");
+    }
   }
 }
