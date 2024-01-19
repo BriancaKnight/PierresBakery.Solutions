@@ -31,5 +31,24 @@ namespace Bakery.Tests
       newBread.BreadOrder = newBreadOrder;
       Assert.AreEqual(newBreadOrder, newBread.BreadOrder);
     }
+
+    [TestMethod]
+    public void DetermineBreadCost_FindCostOfBreadOrder_Int()
+    {
+      Bread newBread = new Bread(2);
+      int result = newBread.DetermineBreadCost();
+      int expected = 10;
+      Assert.AreEqual(result, expected);
+
+      Bread noBread = new Bread(0);
+      int noBreadResult = noBread.DetermineBreadCost();
+      int noBreadExpected = 0;
+      Assert.AreEqual(noBreadResult, noBreadExpected);
+
+      Bread discountBread = new Bread(3);
+      int discountBreadResult = discountBread.DetermineBreadCost();
+      int discountBreadExpected = 10;
+      Assert.AreEqual(discountBreadResult, discountBreadExpected);
+    }
   }
 }
