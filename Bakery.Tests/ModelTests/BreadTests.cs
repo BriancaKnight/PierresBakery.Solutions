@@ -45,9 +45,9 @@ namespace Bakery.Tests
       int noBreadExpected = 0;
       Assert.AreEqual(noBreadResult, noBreadExpected);
 
-      Bread discountBread = new Bread(3);
+      Bread discountBread = new Bread(8);
       int discountBreadResult = discountBread.DetermineBreadCost();
-      int discountBreadExpected = 10;
+      int discountBreadExpected = 30;
       Assert.AreEqual(discountBreadResult, discountBreadExpected);
     }
   }
