@@ -15,75 +15,139 @@ class Program
     if (shop == "y" || shop == "Y")
     {
       Console.WriteLine("Great! Let's get started.");
-      int breadOrder = OrderBread();
-      int pastryOrder = OrderPastry();
+      CreateOrder();
+    }
+    else
+    {
+      Console.WriteLine("Thanks for stopping by! See you soon!");
+    }
+  }
 
-      Console.WriteLine($"Ok, you want {breadOrder} loaves of bread and {pastryOrder} pastries, is that right? Enter 'y' for yes and 'n' to enter new values.");
+  static void CreateOrder()
+  {
+    int breadOrder = OrderItem("bread");
+    int pastryOrder = OrderItem("pastry");
 
-      string order = Console.ReadLine();
+    Console.WriteLine($"Ok, you want {breadOrder} loaves of bread and {pastryOrder} pastries, is that right? Enter 'y' for yes and 'n' to enter new values.");
 
-      if (order == "y" || order == "Y")
+    string order = Console.ReadLine();
+
+    if (order == "y" || order == "Y")
+    {
+      Bread newBread = new Bread(breadOrder);
+      Pastry newPastry = new Pastry(pastryOrder);
+      Console.WriteLine($"Total cost: ${newBread.DetermineBreadCost()} for bread and ${newPastry.DeterminePastryCost()} for pastries.");
+      Console.WriteLine($"That brings the total of your order to ${newBread.DetermineBreadCost() + newPastry.DeterminePastryCost()}");
+      Console.WriteLine("Thank you for shopping at the Virtual Bakery!");
+    }
+    else
+    {
+      Console.WriteLine("No problem, let's try again!");
+      CreateOrder();
+    }
+  }
+
+  static int OrderItem(string itemName)
+  {
+    Console.WriteLine($"How many orders of {itemName} would you like?");
+    if (int.TryParse(Console.ReadLine(), out int orderQuantity) && orderQuantity > 0)
+    {
+      Console.WriteLine($"So you want to order {orderQuantity} {itemName}. Write 'y' to confirm or 'n' to try again.");
+      string confirmation = Console.ReadLine();
+
+      if (confirmation == "y" || confirmation == "Y")
       {
-        Bread newBread = new Bread(breadOrder);
-        Pastry newPastry = new Pastry(pastryOrder);
-        Console.WriteLine($"Total cost: ${newBread.DetermineBreadCost()} for bread and ${newPastry.DeterminePastryCost()} for pastries.");
-        Console.WriteLine($"That brings the total of your order to ${newBread.DetermineBreadCost() + newPastry.DeterminePastryCost()}");
-        Console.WriteLine("Thank you for shopping at the Virtual Bakery!");
+        Console.WriteLine($"Got it!");
+        return orderQuantity;
+      }
+      else if (confirmation == "n" || confirmation == "N")
+      {
+        Console.WriteLine("Let's try again!");
+        return OrderItem(itemName);
       }
       else
       {
-        Console.WriteLine("No problem, let's try again!");
-          Console.WriteLine("Which order would you like to change? Enter B for bread and 'P' for pastry.");
-           string change = Console.ReadLine();
-           if (change == "B" || change == "b")
-           {
-            breadOrder = OrderBread();
-           }
-           else if (change == "P" || change == "p")
-           {
-           pastryOrder = OrderPastry();
-           }
-           else 
-           {
-            Console.WriteLine("Please enter a vaild response.");
-            Console.WriteLine("Which order would you like to change? Enter B for bread and 'P' for pastry.");
-           }
+        Console.WriteLine("Invaild input. Please enter 'y' to confirm or 'n' to try again.");
+        return OrderItem(itemName);
       }
     }
-  }
-
-  static int OrderBread()
-  {
-    Console.WriteLine("How many loaves of bread would you like to order?");
-    if (int.TryParse(Console.ReadLine(), out int breadOrder) && breadOrder > 0)
-    {
-      Console.WriteLine($"You ordered {breadOrder} loaves of bread.");
-      return breadOrder;
-    }
     else
     {
-      Console.WriteLine("Invalid bread input. Please enter a number above 0.");
-      return OrderBread();
-    }
-  }
-  static int OrderPastry()
-  {
-    Console.WriteLine("How many pastries would you like to order?");
-    if (int.TryParse(Console.ReadLine(), out int pastryOrder) && pastryOrder > 0)
-    {
-      Console.WriteLine($"You ordered {pastryOrder} pastries.");
-      return pastryOrder;
-    }
-    else
-    {
-      Console.WriteLine("Invalid pastry input. Please enter a number above 0.");
-      return OrderPastry();
+      Console.WriteLine($"Invalid {itemName} input. Please enter a number above 0.");
+      return OrderItem(itemName);
     }
   }
 }
 
 
 
+
+//     Console.WriteLine($"Ok, you want {breadOrder} loaves of bread and {pastryOrder} pastries, is that right? Enter 'y' for yes and 'n' to enter new values.");
+
+//     string order = Console.ReadLine();
+
+//     if (order == "y" || order == "Y")
+//     {
+
+//       Pastry newPastry = new Pastry(pastryOrder);
+//       Console.WriteLine($"Total cost: ${newBread.DetermineBreadCost()} for bread and ${newPastry.DeterminePastryCost()} for pastries.");
+//       Console.WriteLine($"That brings the total of your order to ${newBread.DetermineBreadCost() + newPastry.DeterminePastryCost()}");
+//       Console.WriteLine("Thank you for shopping at the Virtual Bakery!");
+//     }
+//     else
+//     {
+//       Console.WriteLine("No problem, let's try again!");
+//       Console.WriteLine("Which order would you like to change? Enter B for bread and 'P' for pastry.");
+//       string change = Console.ReadLine();
+//       if (change == "B" || change == "b")
+//       {
+//         breadOrder = OrderBread();
+//       }
+//       else if (change == "P" || change == "p")
+//       {
+//         pastryOrder = OrderPastry();
+//       }
+//       else
+//       {
+//         Console.WriteLine("Please enter a vaild response.");
+//         Console.WriteLine("Which order would you like to change? Enter B for bread and 'P' for pastry.");
+//       }
+//     }
+//   }
+// }
+
+// static int OrderBread()
+// {
+//   Console.WriteLine("How many loaves of bread would you like to order?");
+//   if (int.TryParse(Console.ReadLine(), out int breadOrder) && breadOrder > 0)
+//   {
+//     Console.WriteLine($"You ordered {breadOrder} loaves of bread.");
+//     return breadOrder;
+//   }
+//   else
+//   {
+//     Console.WriteLine("Invalid bread input. Please enter a number above 0.");
+//     return OrderBread();
+//   }
+// }
+// static int OrderPastry()
+// {
+//   Console.WriteLine("How many pastries would you like to order?");
+//   if (int.TryParse(Console.ReadLine(), out int pastryOrder) && pastryOrder > 0)
+//   {
+//     Console.WriteLine($"You ordered {pastryOrder} pastries.");
+//     return pastryOrder;
+//   }
+//   else
+//   {
+//     Console.WriteLine("Invalid pastry input. Please enter a number above 0.");
+//     return OrderPastry();
+//   }
+// }
+// }
+
+
+// ----------------------------------------------------
 
 //   static void OrderBakeryItems()
 //   {
