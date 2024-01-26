@@ -106,5 +106,13 @@ namespace Bakery.Tests
     CollectionAssert.AreEqual(expected, Order.GetAll());
   }
 
+  [TestMethod]
+  public void GetId_OrderssIsntantiateWithAnIdAndGetterReturns_Int()
+  {
+    Order newOrder = new Order("bread", "delicious!", 3, new DateTime(2024, 02, 28));
+    int result = newOrder.Id;
+    Assert.AreEqual(1, result);
+  }
+
   }
 }

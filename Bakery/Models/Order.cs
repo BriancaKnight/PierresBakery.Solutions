@@ -10,6 +10,7 @@ namespace Bakery.Models
   public int Price {get; set;}
   public DateTime Date {get;}
   private static List<Order> _instances = new List<Order> { };
+  public int Id { get; }
   
     public Order(string title, string description, int price, DateTime date)
     {
@@ -18,6 +19,7 @@ namespace Bakery.Models
       Price = price;
       Date = date;
      _instances.Add(this);
+      Id = _instances.Count;
     }
 
     public static List<Order> GetAll()
