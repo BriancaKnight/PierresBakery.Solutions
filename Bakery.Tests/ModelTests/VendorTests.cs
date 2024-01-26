@@ -38,5 +38,17 @@ public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
     int result = newVendor.Id;
     Assert.AreEqual(1, result);
   }
+
+  [TestMethod]
+  public void GetAll_ReturnsAllVenderObjects_VendorList()
+  {
+    string name1 = "Brianca's Bakery";
+    string name2 = "Yrekab S'acnairb";
+    Vendor newVendor1 = new Vendor(name1);
+    Vendor newVendor2 = new Vendor(name2);
+    List<Vendor> newList = new List<Vendor> {newVendor1, newVendor2};
+    List<Vendor> result = Vendor.GetAll();
+    CollectionAssert.AreEqual(newList, result);
+  }
   }
 }
