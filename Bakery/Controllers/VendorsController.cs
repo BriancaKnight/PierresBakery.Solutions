@@ -15,6 +15,17 @@ namespace Bakery.Controllers
       return View(allVendors);
     }
 
+  [HttpGet("/vendors/new")]
+  public ActionResult New()
+  {
+    return View();
+  }
 
+    [HttpPost("/vendors")]
+  public ActionResult Create(string vendorName)
+  {
+    Category newVendor = new Category(vendorName);
+    return RedirectToAction("Index");
+  }
   }
 }
