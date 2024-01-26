@@ -74,7 +74,7 @@ namespace Bakery.Tests
   {
     int price = 3;
     Order newOrder = new Order("bread", "delicious!", price, new DateTime(2024, 02, 28));
-    int updatedPrice = 4;
+    int updatedPrice = 30;
     newOrder.Price = updatedPrice;
     int result = newOrder.Price;
     Assert.AreEqual(updatedPrice, result);
@@ -114,5 +114,13 @@ namespace Bakery.Tests
     Assert.AreEqual(1, result);
   }
 
+  [TestMethod]
+  public void Find_ReturnsCorrectOrder_Order()
+  {
+  Order Order1 = new Order("bread", "delicious!", 3, new DateTime(2024, 02, 28));
+  Order Order2 = new Order("pastry", "foul!", 30, new DateTime(1993, 02, 28));
+  Order result = Order.Find(2);
+  Assert.AreEqual(Order2, result);
+  }
   }
 }
