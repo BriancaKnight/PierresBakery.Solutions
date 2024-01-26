@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace Bakery.Models
 {
@@ -7,12 +8,14 @@ namespace Bakery.Models
   public string Title {get; set;}
   public string Description {get; set;}
   public int Price {get; set;}
+  public DateTime Date {get;}
   
-    public Order(string title, string description, int price)
+    public Order(string title, string description, int price, DateTime date)
     {
       Title = title;
       Description = description;
       Price = price;
+      Date = date;
 
     }
   }
