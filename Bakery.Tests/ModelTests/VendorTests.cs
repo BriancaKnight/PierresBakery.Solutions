@@ -61,5 +61,21 @@ public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
     Vendor result = Vendor.Find(2);
     Assert.AreEqual(newVendor2, result);
   }
+
+    [TestMethod]
+  public void AddOrder_AssociatesItemWithVendor_OrderList()
+  {
+    string title = "bread";
+    string description = "delicious!";
+    int price = 3;
+    DateTime date = new DateTime(2024, 02, 28);
+    Order newOrder = new Order(title, description, price, date);
+    List<Order> newList = new List<Order> { newOrder };
+    string name = "Brianca's Bakery";
+    Vendor newVendor = new Vendor(name);
+    newVendor.AddOrder(newOrder);
+    List<Order> result = newVendor.Orders;
+    CollectionAssert.AreEqual(newList, result);
+  }
   }
 }
