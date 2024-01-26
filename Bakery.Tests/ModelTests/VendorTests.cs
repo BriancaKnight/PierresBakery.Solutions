@@ -1,23 +1,23 @@
-// using Microsoft.VisualStudio.TestTools.UnitTesting;
-// using Bakery.Models;
-// using System.Collections.Generic;
-// using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Bakery.Models;
+using System.Collections.Generic;
+using System;
 
-// namespace Bakery.Tests
-// {
-//   [TestClass]
-//   public class CategoryTests
-//   {
+namespace Bakery.Tests
+{
+  [TestClass]
+  public class VendorTests
+  {
 
-// [TestMethod]
-// public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
-// {
-//   Vendor newVendor = new Vendor();
-//   Assert.AreEqual(typeof(Vendor), newVendor.GetType());
-// }
-
-
+[TestMethod]
+public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
+{
+  Vendor newVendor = new Vendor("Brianca's Bakery");
+  Assert.AreEqual(typeof(Vendor), newVendor.GetType());
+}
 
 
-//   }
-// }
+
+
+  }
+}
