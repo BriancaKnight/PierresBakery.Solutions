@@ -65,16 +65,16 @@ namespace Bakery.Tests
      Assert.AreEqual(price, result);
   }
 
-  //    [TestMethod]
-  // public void SetPrice_SetOrderPriceValue_Int()
-  // {
-  //   int price = 3;
-  //   Order newOrder = new Order("bread", "delicious!", price);
-  //   string updatedPrice = 4;
-  //   newOrder.Price = updatedPrice;
-  //   int result = newOrder.Price;
-  //   Assert.AreEqual(updatedPrice, result);
-  // }
+    [TestMethod]
+  public void SetPrice_SetOrderPriceValue_Int()
+  {
+    int price = 3;
+    Order newOrder = new Order("bread", "delicious!", price);
+    int updatedPrice = 4;
+    newOrder.Price = updatedPrice;
+    int result = newOrder.Price;
+    Assert.AreEqual(updatedPrice, result);
+  }
 
 
   }
