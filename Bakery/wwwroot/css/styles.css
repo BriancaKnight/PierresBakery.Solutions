@@ -6,7 +6,7 @@ div#header {
   top:0px;
   left:0px;
   width:100%;
-  color:#0f25f2;
+  color:#0315ae;
   background:#c3f0f23f;
   padding:8px;
   text-align: center;
@@ -23,7 +23,31 @@ div#year {
   font-style: italic;
 }
 
-h1 {
+h1, h2 {
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+form {
+  text-align: center; /* Center the form content */
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+  background-color: #c3f0f23f;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px; /* Adjust as needed */
+  text-align: center;
+  border: 1px solid #0315ae;
+}
+
+button:hover {
+  background-color: #0315ae; /* Change color on hover if desired */
+}
+
+div#links {
   text-align: center;
 }
