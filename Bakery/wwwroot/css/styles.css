@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 div#header {
+  font-family: 'Montserrat', sans-serif;
   position:fixed;
   top:0px;
   left:0px;
@@ -10,14 +13,17 @@ div#header {
 }
 
 div#title {
+  font-family: 'Montserrat', sans-serif;
   font-size: xx-large;
 }
 
 div#year {
+  font-family: 'Montserrat', sans-serif;
   font-size: large;
   font-style: italic;
 }
 
 h1 {
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
 }
