@@ -24,5 +24,19 @@ namespace Bakery.Tests
      string result = newOrder.Title;
      Assert.AreEqual(title, result);
   }
+
+     [TestMethod]
+  public void SetTitle_SetOrderTitleValue_String()
+  {
+    string title = "bread";
+    Order newOrder = new Order(title);
+    string updatedTitle = "pastry";
+    newOrder.Title = updatedTitle;
+    string result = newOrder.Title;
+    Assert.AreEqual(updatedTitle, result);
+  }
+
+
+
   }
 }
