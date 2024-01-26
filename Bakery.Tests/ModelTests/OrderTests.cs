@@ -6,9 +6,13 @@ using System;
 namespace Bakery.Tests
 {
   [TestClass]
-  public class OrderTests
+  public class OrderTests : IDisposable
   {
-
+      public void Dispose()
+      {
+      Order.ClearAll();
+      }
+  
     [TestMethod]
     public void OrderConstructor_CreatesInstanceOfOrder_Order()
     {
@@ -83,6 +87,23 @@ namespace Bakery.Tests
      Order newOrder = new Order("bread", "delicious!", 3, date);
      DateTime result = newOrder.Date;
      Assert.AreEqual(date, result);
+  }
+
+  [TestMethod]
+  public void GetAll_ReturnsEmptyList_OrderList()
+  {
+    List<Order> newList = new List<Order> { };
+    List<Order> result = Order.GetAll();
+    CollectionAssert.AreEqual(newList, result);
+  }
+
+  [TestMethod]
+  public void ClearAll_DeletesAllOrdersInList_Void()
+  {
+    Order newOrder = new Order("bread", "delicious!", 3, new DateTime(2024, 02, 28));
+    List<Order> expected = new List<Order> { };
+    Order.ClearAll();
+    CollectionAssert.AreEqual(expected, Order.GetAll());
   }
 
   }
