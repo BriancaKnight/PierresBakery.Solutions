@@ -17,7 +17,7 @@ namespace Bakery.Models
       Title = title;
       Description = description;
       Price = price;
-      Date = date;
+      Date = DateTime.Now;
      _instances.Add(this);
       Id = _instances.Count;
     }
