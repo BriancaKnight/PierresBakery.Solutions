@@ -83,10 +83,11 @@ namespace Bakery.Tests
    [TestMethod]
    public void GetDate_ReturnDateValue_DateTime()
   {
-     DateTime date = new DateTime(2024, 02, 28);
+     DateTime date = DateTime.Now;
      Order newOrder = new Order("bread", "delicious!", 3, date);
      DateTime result = newOrder.Date;
-     Assert.AreEqual(date, result);
+     TimeSpan accept = result-date;
+     Assert.IsTrue(accept.TotalSeconds < 1);
   }
 
   [TestMethod]

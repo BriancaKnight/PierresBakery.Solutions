@@ -2,12 +2,13 @@
 
 div#header {
   font-family: 'Montserrat', sans-serif;
+  font-style: italic;
   position:fixed;
   top:0px;
   left:0px;
   width:100%;
-  color:#0315ae;
-  background:#c3f0f23f;
+  color:#000000;
+  background-image: linear-gradient(to bottom right, #0315ae, rgb(255, 255, 255));
   padding:8px;
   text-align: center;
 }
