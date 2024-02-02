@@ -29,7 +29,7 @@ h1, h2 {
 }
 
 form {
-  text-align: center; /* Center the form content */
+  text-align: center; 
 }
 
 button {
@@ -39,13 +39,13 @@ button {
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  margin-top: 10px; /* Adjust as needed */
+  margin-top: 10px; 
   text-align: center;
   border: 1px solid #0315ae;
 }
 
 button:hover {
-  background-color: #0315ae; /* Change color on hover if desired */
+  background-color: #0315ae; 
 }
 
 div#links {
